@@ -93,14 +93,14 @@ class MovieHandler( xml.sax.ContentHandler ):
 		global informationalHost
 		self.CurrentData = tag
 		if tag == "ReportHost":											#This is true when the XML tag is called ReportHost
-			print "* * * * * I have a host * * * * * "
+			print ("* * * * * I have a host * * * * * ")                #Python 3 print function
 			hName = attributes["name"]
 			#print "Host Name:", hName
 			Host = Host + 1
 		if tag == "tag":												#This is true when the XML tag is actually called tag.
 			tagID = attributes["name"]									#Stores the attribute name into tagID... see explanation at beginning of code
 		if tag == "ReportItem":
-			print "* * * * * Report Item * * * * *"
+			print ("* * * * * Report Item * * * * *")                   #Python 3 print function
 			port = attributes["port"]									#Open Ports reported by nessus
 			svc_name = attributes["svc_name"]							#Service running on the port
 			protocol = attributes["protocol"]							#TCP or UDP protocol
@@ -272,10 +272,10 @@ class MovieHandler( xml.sax.ContentHandler ):
 				#print "Mac Address:", self.tag
 				startElementMAC = self.tag								#stores content in startElementMAC variable so it can be called above and printed for repeating rows
 			elif tagID == "nothing":
-				print "HOW DID YOU GET HERE?"
+				print ("HOW DID YOU GET HERE?")                         #Python 3 print function
 		elif self.CurrentData == "description":
 			descriptionSentence = ""
-			print "Description:",
+			print ("Description:"),                                     #Python 3 print function
 			descriptionSentence = " ".join(descriptList)
 			#print descriptionSentence
 			#print ""
@@ -283,7 +283,7 @@ class MovieHandler( xml.sax.ContentHandler ):
 			descriptionCount += 1
 			descriptionSwitch = "on"
 		elif self.CurrentData == "risk_factor":
-                        print "Risk Factor:",
+                        print ("Risk Factor:"),                         #Python 3 print function
 			#print "Risk Factor:", self.risk_factor						#Print the Risk Factor
 		elif self.CurrentData == "solution":
 			solutionSentence = ""
@@ -646,5 +646,5 @@ if ( __name__ == "__main__"):
 		missingBigFix = Host - bigfixHost
 		homeWorksheet.write('B8', missingBigFix)
 		homeWorksheet.write ('B11', publicExploits)
-		print "Total Host:", Host
+		print ("Total Host:"), Host  #Python 3 print function
 	MovieHandler().reportClose()
